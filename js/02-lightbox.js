@@ -25,6 +25,6 @@ function openImage(event) {
     if (event.target.nodeName !== "IMG") {
         return;
     }
-    var lightbox = new SimpleLightbox('.gallery a', {});
+    var lightbox = new SimpleLightbox('.gallery a', {captionsData: "alt", captionsDelayTime: 250});
 };
 
