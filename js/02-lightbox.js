@@ -18,13 +18,6 @@ const addGalleryMarkup = galleryMarkup(galleryItems);
 
 gallery.insertAdjacentHTML("afterbegin", addGalleryMarkup);
 
-gallery.addEventListener('click', openImage);
-
-function openImage(event) {
-    event.preventDefault()
-    if (event.target.nodeName !== "IMG") {
-        return;
-    }
     var lightbox = new SimpleLightbox('.gallery a', {captionsData: "alt", captionsDelayTime: 250});
-};
+
 

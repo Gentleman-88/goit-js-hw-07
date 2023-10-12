@@ -4,6 +4,8 @@ console.log(galleryItems);
 
 const gallery = document.querySelector('.gallery');
 
+let modalInstance = null;
+
 function galleryMarkup(items) {
     return items.map((item) => `
     <li class="gallery__item">
@@ -33,13 +35,16 @@ function openImage(event) {
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
 `)
+    modalInstance = instance;
     instance.show()
-
-    gallery.addEventListener('keydown', (event) => {
-    if (event.code === 'Escape') {
-        instance.close();
-    };
-});
+    document.addEventListener('keydown', closeModalOnEscape);
 };
 
+
+function closeModalOnEscape(event) {
+    if (event.code === 'Escape') {
+        modalInstance.close();
+        document.removeEventListener('keydown', closeModalOnEscape);
+    }
+}
 
